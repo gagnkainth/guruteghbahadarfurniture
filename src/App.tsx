@@ -671,9 +671,6 @@ function Footer() {
               Dedicated to crafting spaces that inspire. Our mission is to bring Italian elegance and superior craftsmanship to every home, one bespoke piece at a time.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
-                <Facebook size={18} />
-              </a>
               <a href="https://www.instagram.com/casa_boutique_woodwork?igsh=Y2RodzM3eTU1emRp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
                 <Instagram size={18} />
               </a>
