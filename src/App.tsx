@@ -1,71 +1,119 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, MapPin, Facebook, Instagram, Twitter, ArrowRight, CheckCircle } from 'lucide-react';
+import { MessageCircle, MapPin, Facebook, Instagram, Twitter, ArrowRight, CheckCircle, Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
 
 function Header({ activeSection }: { activeSection: string }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'Home', href: '#', id: 'home' },
+    { name: 'Services', href: '#services', id: 'services' },
+    { name: 'Collection', href: '#collection', id: 'collection' },
+    { name: 'Reviews', href: '#reviews', id: 'reviews' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
+  ];
+
   return (
-    <header className="bg-[#0a0a0a]/90 backdrop-blur-md fixed top-0 z-50 border-b border-white/5 shadow-sm w-full h-20 transition-all">
-      <div className="w-full mx-auto px-6 md:px-10 flex items-center h-full gap-6">
-        {/* Brand — left, flex-1 so it anchors to the left */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex items-center gap-3 flex-1 min-w-0"
-        >
-          <img src="/images/logo.png" alt="GTB Logo" className="h-12 w-12 object-cover flex-shrink-0 rounded-full shadow-[0_0_20px_rgba(229,184,105,0.4)] border border-[#E5B869]/20" loading="eager" decoding="async" width="48" height="48" />
-          <span className="font-serif text-base md:text-lg font-bold uppercase tracking-widest text-[#E5B869] whitespace-nowrap">
-            Guru Tegh Bahadar <span className="hidden sm:inline text-white">Furniture</span>
-          </span>
-        </motion.div>
+    <>
+      <header className="bg-[#0a0a0a]/90 backdrop-blur-md fixed top-0 z-50 border-b border-white/5 shadow-sm w-full h-20 transition-all">
+        <div className="w-full mx-auto px-6 md:px-10 flex items-center h-full justify-between lg:justify-start gap-6">
+          {/* Brand — left */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-3 min-w-0"
+          >
+            <img src="/images/logo.png" alt="GTB Logo" className="h-10 w-10 md:h-12 md:w-12 object-cover flex-shrink-0 rounded-full shadow-[0_0_20px_rgba(229,184,105,0.4)] border border-[#E5B869]/20" loading="eager" decoding="async" width="48" height="48" />
+            <span className="font-serif text-sm md:text-lg font-bold uppercase tracking-widest text-[#E5B869] whitespace-nowrap">
+              Guru Tegh Bahadar <span className="hidden sm:inline text-white">Furniture</span>
+            </span>
+          </motion.div>
 
-        {/* Nav — centered, flex-1 */}
-        <motion.nav 
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="hidden lg:flex flex-1 justify-center gap-10 items-center"
-        >
-          <a className={`relative group ${activeSection === 'home' ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} href="#">
-            Home
-            <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#E5B869] transition-all duration-300 group-hover:w-full ${activeSection === 'home' ? 'w-full' : 'w-0'}`}></span>
-          </a>
-          <a className={`relative group ${activeSection === 'services' ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} href="#services">
-            Services
-            <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#E5B869] transition-all duration-300 group-hover:w-full ${activeSection === 'services' ? 'w-full' : 'w-0'}`}></span>
-          </a>
-          <a className={`relative group ${activeSection === 'collection' ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} href="#collection">
-            Collection
-            <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#E5B869] transition-all duration-300 group-hover:w-full ${activeSection === 'collection' ? 'w-full' : 'w-0'}`}></span>
-          </a>
-          <a className={`relative group ${activeSection === 'reviews' ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} href="#reviews">
-            Reviews
-            <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#E5B869] transition-all duration-300 group-hover:w-full ${activeSection === 'reviews' ? 'w-full' : 'w-0'}`}></span>
-          </a>
-          <a className={`relative group ${activeSection === 'contact' ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} href="#contact">
-            Contact
-            <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#E5B869] transition-all duration-300 group-hover:w-full ${activeSection === 'contact' ? 'w-full' : 'w-0'}`}></span>
-          </a>
-        </motion.nav>
+          {/* Nav — Desktop */}
+          <motion.nav 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hidden lg:flex flex-1 justify-center gap-10 items-center"
+          >
+            {navLinks.map((link) => (
+              <a 
+                key={link.name}
+                className={`relative group ${activeSection === link.id ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} 
+                href={link.href}
+              >
+                {link.name}
+                <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#E5B869] transition-all duration-300 group-hover:w-full ${activeSection === link.id ? 'w-full' : 'w-0'}`}></span>
+              </a>
+            ))}
+          </motion.nav>
 
-        {/* Book Now — right */}
-        <motion.a
-          href="#contact"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="hidden md:block bg-transparent border border-[#E5B869] text-[#E5B869] px-6 py-2 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl flex-shrink-0"
+          {/* Mobile Menu Toggle */}
+          <div className="flex items-center gap-4 lg:hidden">
+            <a href="#contact" className="bg-[#E5B869] text-[#0a0a0a] px-4 py-2 uppercase text-[10px] font-bold tracking-widest rounded-lg">Book Now</a>
+            <button 
+              className="text-white p-1 hover:text-[#E5B869] transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+
+          {/* Book Now — Desktop */}
+          <motion.a
+            href="#contact"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block bg-transparent border border-[#E5B869] text-[#E5B869] px-6 py-2 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl flex-shrink-0"
+          >
+            Book Now
+          </motion.a>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-[60] bg-black/98 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col items-center justify-center ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+        <button 
+          className="absolute top-6 right-6 text-zinc-500 hover:text-white transition-colors"
+          onClick={() => setIsMenuOpen(false)}
         >
-          Book Now
-        </motion.a>
+          <X size={32} />
+        </button>
+        <div className="flex flex-col items-center gap-8 text-center">
+          {navLinks.map((link, idx) => (
+            <motion.a 
+              key={link.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isMenuOpen ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: idx * 0.1 }}
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-2xl font-serif tracking-[0.2em] uppercase ${activeSection === link.id ? 'text-[#E5B869]' : 'text-white'}`}
+              href={link.href}
+            >
+              {link.name}
+            </motion.a>
+          ))}
+          <motion.a 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isMenuOpen ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6 }}
+            onClick={() => setIsMenuOpen(false)}
+            href="#contact"
+            className="mt-8 bg-[#E5B869] text-[#0a0a0a] px-10 py-4 uppercase text-sm font-bold tracking-widest rounded-xl shadow-xl shadow-[#E5B869]/20"
+          >
+            Book Now
+          </motion.a>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-[#0a0a0a] pt-20 pb-32 overflow-hidden">
+    <section id="home" className="relative min-h-[100dvh] lg:min-h-screen flex items-center bg-[#0a0a0a] pt-24 pb-12 lg:pt-20 lg:pb-32 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 w-full h-full">
         <img
@@ -84,7 +132,7 @@ function Hero() {
         <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#E5B869]/10 to-transparent pointer-events-none"></div>
       </div>
       
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center -mt-10 md:-mt-20">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center mt-4 lg:-mt-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
