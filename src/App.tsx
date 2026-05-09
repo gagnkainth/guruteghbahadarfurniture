@@ -674,11 +674,16 @@ function Footer() {
               <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
+              <a href="https://www.instagram.com/casa_boutique_woodwork?igsh=Y2RodzM3eTU1emRp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
-                <Twitter size={18} />
+              <a href="https://www.tiktok.com/@Casaboutique001" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.14.99.13 2.02.74 2.8.59.75 1.48 1.21 2.43 1.28.81.06 1.64-.15 2.34-.57.78-.44 1.34-1.2 1.54-2.07.05-1.04.03-2.09.03-3.13.01-4.77-.01-9.54.01-14.31z" />
+                </svg>
+              </a>
+              <a href="https://wa.me/393890383360" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:border-[#E5B869] hover:text-[#E5B869] transition-all">
+                <MessageCircle size={18} />
               </a>
             </div>
           </div>
@@ -699,7 +704,7 @@ function Footer() {
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-[#E5B869] text-[10px] font-bold uppercase tracking-widest mb-1">Email Inquiry</span>
-                <a href="mailto:info@guruteghbahadar.com" className="hover:text-white transition-colors">info@guruteghbahadar.com</a>
+                <a href="mailto:singhgurjit2477@gmail.com" className="hover:text-white transition-colors">singhgurjit2477@gmail.com</a>
               </div>
             </div>
           </div>
