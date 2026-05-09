@@ -58,17 +58,6 @@ function Header({ activeSection }: { activeSection: string }) {
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
-
-          {/* Book Now — Desktop */}
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block bg-transparent border border-[#E5B869] text-[#E5B869] px-6 py-2 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl flex-shrink-0"
-          >
-            Book Now
-          </motion.a>
         </div>
       </header>
 
