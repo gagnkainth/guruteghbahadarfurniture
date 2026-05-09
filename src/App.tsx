@@ -200,7 +200,7 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
       </motion.div>
       
       {/* Sub-items */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
         {items.map((item, idx) => (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -210,18 +210,18 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
             key={idx} 
             className="group relative bg-[#141414] border border-white/5 overflow-hidden hover:border-[#E5B869]/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 rounded-2xl"
           >
-            <div className="w-full h-64 overflow-hidden relative border-b border-white/5 rounded-t-2xl">
+            <div className="w-full h-40 sm:h-64 overflow-hidden relative border-b border-white/5 rounded-t-2xl">
               <img src={item.src} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" loading="lazy" decoding="async" />
             </div>
-            <div className="p-6">
-              <h4 className="font-serif text-xl font-semibold text-white mb-1 group-hover:text-[#E5B869] transition-colors">
+            <div className="p-4 md:p-6 text-left">
+              <h4 className="font-serif text-sm md:text-xl font-semibold text-white mb-1 group-hover:text-[#E5B869] transition-colors line-clamp-1">
                 {item.name}
-                <span className="block text-xs text-zinc-500 font-sans font-normal mt-0.5 group-hover:text-zinc-400 transition-colors">({item.italianName})</span>
+                <span className="block text-[9px] md:text-xs text-zinc-500 font-sans font-normal mt-0.5 group-hover:text-zinc-400 transition-colors">({item.italianName})</span>
               </h4>
-              <p className="font-sans text-sm font-light text-zinc-400 mb-6 h-10">{item.desc}</p>
-              <div className="flex border-t border-white/5 pt-4 mt-auto">
-                <a href="#contact" className="font-sans text-[11px] tracking-widest uppercase font-bold text-zinc-300 group-hover:text-[#E5B869] transition-colors flex items-center gap-2">
-                  Inquire Now <ArrowRight size={14} />
+              <p className="font-sans text-[10px] md:text-sm font-light text-zinc-400 mb-4 md:mb-6 h-12 md:h-10 line-clamp-2 md:line-clamp-none leading-tight md:leading-normal">{item.desc}</p>
+              <div className="flex border-t border-white/5 pt-3 md:pt-4 mt-auto">
+                <a href="#contact" className="font-sans text-[9px] md:text-[11px] tracking-widest uppercase font-bold text-zinc-300 group-hover:text-[#E5B869] transition-colors flex items-center gap-1 md:gap-2">
+                  Inquire <span className="hidden xs:inline">Now</span> <ArrowRight size={12} className="md:w-[14px] md:h-[14px]" />
                 </a>
               </div>
             </div>
