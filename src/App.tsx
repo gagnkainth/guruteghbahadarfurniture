@@ -143,7 +143,7 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: false, margin: "-100px", amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="relative h-[300px] md:h-[400px] mb-12 overflow-hidden border border-white/5 group rounded-2xl"
       >
@@ -169,7 +169,7 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: false, margin: "-50px", amount: 0.2 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             key={idx} 
             className="group relative bg-[#141414] border border-white/5 overflow-hidden hover:border-[#E5B869]/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 rounded-2xl"
@@ -203,7 +203,7 @@ function Collections() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -376,7 +376,7 @@ function Services() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-24"
         >
@@ -392,7 +392,7 @@ function Services() {
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px", amount: 0.2 }}
               transition={{ duration: 0.8 }}
               key={idx} 
               className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}
@@ -446,7 +446,7 @@ function Craftsmanship() {
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8 }}
           className="w-full md:w-1/2"
         >
@@ -461,7 +461,7 @@ function Craftsmanship() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="absolute -bottom-8 -right-4 sm:-right-8 bg-[#E5B869] p-6 lg:p-8 text-[#0a0a0a] max-w-[200px] sm:max-w-[240px] shadow-2xl rounded-2xl"
             >
@@ -473,7 +473,7 @@ function Craftsmanship() {
         <motion.div 
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8 }}
           className="w-full md:w-1/2 mt-16 md:mt-0 lg:pl-12"
         >
@@ -549,7 +549,7 @@ function ContactSection() {
   return (
     <section className="bg-[#0a0a0a] py-32 min-h-screen flex items-center border-t border-white/5 relative overflow-hidden" id="contact">
       <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
-      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.8 }}
         className="max-w-[800px] mx-auto px-4 md:px-16 w-full relative z-10 text-center">
         <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-4 block">Connect &amp; Booking</span>
         <h2 className="font-serif text-4xl md:text-6xl font-semibold tracking-tight leading-snug text-white mb-6">
@@ -782,7 +782,7 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           className="flex flex-col items-center justify-center max-w-[640px] mx-auto text-center mb-16"
         >
           <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-4 block">Testimonials</span>
