@@ -147,9 +147,9 @@ function Hero() {
               Discover Collections
               <span className="block text-[10px] font-normal tracking-wide normal-case mt-0.5 opacity-60">(Scopri le Collezioni)</span>
             </a>
-            <a href="#contact" className="flex flex-col items-center justify-center bg-transparent border border-white/20 text-white font-sans text-xs font-bold tracking-widest uppercase px-8 py-5 hover:border-[#E5B869] hover:text-[#E5B869] transition-all shadow-[0_0_18px_rgba(255,255,255,0.07)] hover:shadow-[0_0_28px_rgba(229,184,105,0.35)] rounded-xl">
+            <a href="#contact" className="bg-[#E5B869] text-[#0a0a0a] font-sans text-xs font-bold tracking-widest uppercase px-8 py-5 hover:bg-white hover:text-[#0a0a0a] transition-all shadow-lg shadow-[#E5B869]/30 hover:shadow-[#E5B869]/60 hover:shadow-xl text-center rounded-xl flex flex-col items-center justify-center">
               Book a Consultation
-              <span className="text-[10px] font-normal tracking-wide normal-case text-zinc-400 mt-0.5">(Prenota una Consulenza)</span>
+              <span className="text-[10px] font-normal tracking-wide normal-case text-zinc-600 mt-0.5">(Prenota una Consulenza)</span>
             </a>
           </div>
         </motion.div>
