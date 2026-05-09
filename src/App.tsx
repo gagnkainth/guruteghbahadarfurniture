@@ -13,7 +13,7 @@ function Header({ activeSection }: { activeSection: string }) {
           transition={{ duration: 0.8 }}
           className="flex items-center gap-3 flex-1 min-w-0"
         >
-          <img src="/images/logo.png" alt="GTB Logo" className="h-12 w-12 object-cover flex-shrink-0 rounded-full shadow-[0_0_20px_rgba(229,184,105,0.4)] border border-[#E5B869]/20" />
+          <img src="/images/logo.png" alt="GTB Logo" className="h-12 w-12 object-cover flex-shrink-0 rounded-full shadow-[0_0_20px_rgba(229,184,105,0.4)] border border-[#E5B869]/20" loading="eager" decoding="async" width="48" height="48" />
           <span className="font-serif text-base md:text-lg font-bold uppercase tracking-widest text-[#E5B869] whitespace-nowrap">
             Guru Tegh Bahadar <span className="hidden sm:inline text-white">Furniture</span>
           </span>
@@ -72,6 +72,9 @@ function Hero() {
           alt="Luxury bespoke furniture living room interior"
           src="/images/hero_bg_option2.png"
           className="w-full h-full object-cover opacity-75"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
         />
         {/* Deep left vignette so text is always readable */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 md:via-[#0a0a0a]/55 to-transparent"></div>
@@ -148,6 +151,8 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
           src={bannerSrc} 
           alt={`${title} Banner`}
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 opacity-80"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500"></div>
         <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
@@ -170,7 +175,7 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
             className="group relative bg-[#141414] border border-white/5 overflow-hidden hover:border-[#E5B869]/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 rounded-2xl"
           >
             <div className="w-full h-64 overflow-hidden relative border-b border-white/5 rounded-t-2xl">
-              <img src={item.src} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+              <img src={item.src} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" loading="lazy" decoding="async" />
             </div>
             <div className="p-6">
               <h4 className="font-serif text-xl font-semibold text-white mb-1 group-hover:text-[#E5B869] transition-colors">
@@ -418,6 +423,8 @@ function Services() {
                     src={srv.src} 
                     alt={srv.title} 
                     className="w-full h-[300px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000" 
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
@@ -448,6 +455,8 @@ function Craftsmanship() {
               alt="Artisan hands carefully polishing a piece of dark solid wood with natural wax in a traditional workshop"
               src="/images/craftsmanship.jpg"
               className="w-full h-[400px] md:h-[600px] object-cover border border-white/10 shadow-2xl opacity-90 rounded-2xl"
+              loading="lazy"
+              decoding="async"
             />
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
@@ -747,6 +756,8 @@ export const TestimonialsColumn = (props: {
                       src={image}
                       alt={name}
                       className="h-10 w-10 rounded-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="flex flex-col">
                       <div className="font-serif font-medium tracking-wide text-white">{name}</div>
