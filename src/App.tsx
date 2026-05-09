@@ -101,7 +101,7 @@ function Header({ activeSection }: { activeSection: string }) {
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-[100dvh] lg:min-h-screen flex items-center bg-[#0a0a0a] pt-24 pb-12 lg:pt-20 lg:pb-32 overflow-hidden">
+    <section id="home" className="relative min-h-[100dvh] lg:min-h-screen flex items-center bg-[#0a0a0a] pt-12 pb-12 lg:pt-20 lg:pb-32 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 w-full h-full">
         <img
@@ -120,7 +120,7 @@ function Hero() {
         <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#E5B869]/10 to-transparent pointer-events-none"></div>
       </div>
       
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center mt-4 lg:-mt-20">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center mt-0 lg:-mt-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -131,13 +131,13 @@ function Hero() {
             <div className="w-12 h-[1px] bg-[#E5B869]"></div>
             <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869]">Premium Interior Solutions</span>
           </div>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-white mb-6 drop-shadow-lg">
+          <h1 className="font-serif text-4xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-white mb-4 md:mb-6 drop-shadow-lg">
             Crafting Spaces of <br /><span className="italic font-light text-zinc-400">Distinction.</span>
-            <span className="block text-base md:text-xl font-sans font-light not-italic text-zinc-500 mt-3 tracking-wide">(Creazione di spazi di distinzione)</span>
+            <span className="block text-sm md:text-xl font-sans font-light not-italic text-zinc-500 mt-2 md:mt-3 tracking-wide">(Creazione di spazi di distinzione)</span>
           </h1>
-          <p className="font-sans text-lg text-zinc-300 mb-10 max-w-lg leading-relaxed font-light">
+          <p className="font-sans text-base md:text-lg text-zinc-300 mb-6 md:mb-10 max-w-lg leading-relaxed font-light">
             From the finest bespoke furniture to meticulous PVC solutions and luxury wallpapers. Elevate your space with unmatched Italian craftsmanship.
-            <span className="block text-sm text-zinc-500 mt-2 leading-relaxed font-light">(Dai migliori mobili su misura alle meticolose soluzioni in PVC e carte da parati di lusso.)</span>
+            <span className="block text-xs md:text-sm text-zinc-500 mt-2 leading-relaxed font-light">(Dai migliori mobili su misura alle meticolose soluzioni in PVC e carte da parati di lusso.)</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-6">
             <a
