@@ -50,10 +50,9 @@ function Header({ activeSection }: { activeSection: string }) {
           </motion.nav>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-4 lg:hidden">
-            <a href="#contact" className="bg-[#E5B869] text-[#0a0a0a] px-4 py-2 uppercase text-[10px] font-bold tracking-widest rounded-lg">Book Now</a>
+          <div className="flex items-center lg:hidden">
             <button 
-              className="text-white p-1 hover:text-[#E5B869] transition-colors"
+              className="text-white p-2 hover:text-[#E5B869] transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
