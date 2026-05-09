@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="80%" stop-color="#0a0a0a" />
+      <stop offset="100%" stop-color="#E5B869" stop-opacity="0.5" />
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#glow)" stroke="#E5B869" stroke-width="2" />
+  <text x="50" y="62" font-family="serif" font-size="32" font-weight="bold" fill="#E5B869" text-anchor="middle">GTB</text>
+  <text x="50" y="75" font-family="sans-serif" font-size="8" font-weight="bold" fill="#E5B869" text-anchor="middle" letter-spacing="1">FURNITURE</text>
+</svg>
