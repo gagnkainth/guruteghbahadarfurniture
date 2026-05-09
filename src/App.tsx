@@ -65,7 +65,7 @@ function Header({ activeSection }: { activeSection: string }) {
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-[#0a0a0a] pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center bg-[#0a0a0a] pt-20 pb-32 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 w-full h-full">
         <img
@@ -79,12 +79,12 @@ function Hero() {
         {/* Deep left vignette so text is always readable */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 md:via-[#0a0a0a]/55 to-transparent"></div>
         {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
         {/* Warm gold color wash on the far left edge */}
         <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#E5B869]/10 to-transparent pointer-events-none"></div>
       </div>
       
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center -mt-10 md:-mt-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
