@@ -433,27 +433,48 @@ function Services() {
               key={idx} 
               className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}
             >
-              {/* Text Area */}
-              <div className="flex-1 text-left">
-                <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-2 block">{srv.sub}</span>
-                <span className="font-sans text-[10px] text-zinc-600 tracking-wide mb-6 block">({srv.italianSub})</span>
+              {/* Content Area */}
+              <div className="flex-1 text-left flex flex-col">
+                <div className="order-1">
+                  <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-2 block">{srv.sub}</span>
+                  <span className="font-sans text-[10px] text-zinc-600 tracking-wide mb-6 block">({srv.italianSub})</span>
+                </div>
                 
-                <h3 className="font-serif text-3xl md:text-5xl font-semibold mb-6 text-white leading-tight">
-                  {srv.title}
-                  <span className="block text-lg md:text-2xl text-zinc-500 font-sans font-light mt-2">({srv.italianTitle})</span>
-                </h3>
+                {/* Mobile Image Area - Visible only on mobile */}
+                <div className="md:hidden order-2 mb-10 relative group">
+                  <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+                    <img 
+                      src={srv.src} 
+                      alt={srv.title} 
+                      className="w-full h-[300px] object-cover" 
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  <div className="absolute -inset-2 border border-[#E5B869]/10 rounded-2xl -z-0"></div>
+                </div>
+
+                <div className="order-3">
+                  <h3 className="font-serif text-3xl md:text-5xl font-semibold mb-6 text-white leading-tight">
+                    {srv.title}
+                    <span className="block text-lg md:text-2xl text-zinc-500 font-sans font-light mt-2">({srv.italianTitle})</span>
+                  </h3>
+                  
+                  <p className="font-sans text-lg text-zinc-400 leading-relaxed font-light mb-10 max-w-xl">
+                    {srv.desc}
+                  </p>
+                </div>
                 
-                <p className="font-sans text-lg text-zinc-400 leading-relaxed font-light mb-10 max-w-xl">
-                  {srv.desc}
-                </p>
-                
-                <a href="#contact" className="inline-flex items-center gap-3 bg-transparent border border-[#E5B869] text-[#E5B869] px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl shadow-lg shadow-[#E5B869]/10 hover:shadow-[#E5B869]/30">
-                  Book Service <ArrowRight size={16} />
-                </a>
+                <div className="order-4">
+                  <a href="#contact" className="inline-flex items-center gap-3 bg-transparent border border-[#E5B869] text-[#E5B869] px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl shadow-lg shadow-[#E5B869]/10 hover:shadow-[#E5B869]/30">
+                    Book Service <ArrowRight size={16} />
+                  </a>
+                </div>
               </div>
 
-              {/* Image Area */}
-              <div className="flex-1 w-full relative group">
+              {/* Desktop Image Area - Visible only on desktop */}
+              <div className="hidden md:block flex-1 w-full relative group">
                 <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl z-10">
                   <img 
                     src={srv.src} 
