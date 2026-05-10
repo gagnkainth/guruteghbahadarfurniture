@@ -49,6 +49,21 @@ function Header({ activeSection }: { activeSection: string }) {
             ))}
           </motion.nav>
 
+          {/* Book Now — Desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="hidden lg:flex items-center"
+          >
+            <a 
+              href="#contact" 
+              className="bg-[#E5B869] text-[#0a0a0a] px-6 py-2.5 uppercase text-xs font-bold tracking-widest rounded-xl shadow-lg shadow-[#E5B869]/20 hover:bg-white hover:shadow-[#E5B869]/40 transition-all"
+            >
+              Book Now
+            </a>
+          </motion.div>
+
           {/* Mobile Menu Toggle */}
           <div className="flex items-center lg:hidden">
             <button 
