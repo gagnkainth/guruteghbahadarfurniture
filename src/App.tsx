@@ -26,7 +26,7 @@ function Header({ activeSection }: { activeSection: string }) {
           >
             <img src="/images/logo.png" alt="GTB Logo" className="h-10 w-10 md:h-12 md:w-12 object-cover flex-shrink-0 rounded-full shadow-[0_0_20px_rgba(229,184,105,0.4)] border border-[#E5B869]/20" loading="eager" decoding="async" width="48" height="48" />
             <span className="font-serif text-sm md:text-lg font-bold uppercase tracking-widest text-[#E5B869] whitespace-nowrap">
-              Guru Tegh Bahadar <span className="hidden sm:inline text-white">Furniture</span>
+              Guru Teg Bahadar <span className="text-white">Furniture</span>
             </span>
           </motion.div>
 
@@ -603,7 +603,7 @@ function ContactSection() {
     e.preventDefault();
     
     // Construct the message for WhatsApp
-    const message = `Hello Guru Tegh Bahadar Furniture, I'm interested in your services.
+    const message = `Hello Guru Teg Bahadar Furniture, I'm interested in your services.
 *Name:* ${formData.fullName}
 *Email:* ${formData.email}
 *Service:* ${formData.service}
@@ -677,7 +677,7 @@ function Footer() {
           {/* Left Column - Brand & Mission */}
           <div className="flex-1 max-w-md">
             <div className="font-serif text-2xl md:text-3xl font-bold uppercase tracking-widest text-[#E5B869] mb-4">
-              Guru Tegh Bahadar
+              Guru Teg Bahadar
             </div>
             <div className="font-sans text-xs tracking-[0.2em] text-zinc-500 font-bold mb-8 uppercase">
               Furniture House & Interior Solutions
@@ -725,7 +725,7 @@ function Footer() {
         
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-sans text-[9px] tracking-widest uppercase text-zinc-600 text-center md:text-left">
-            © {new Date().getFullYear()} Guru Tegh Bahadar. All Rights Reserved.
+            © {new Date().getFullYear()} Guru Teg Bahadar. All Rights Reserved.
           </p>
           <div className="flex gap-8 text-zinc-600 font-sans text-[9px] tracking-widest uppercase">
             <a href="#" className="hover:text-zinc-300 transition-colors">Privacy Policy</a>
