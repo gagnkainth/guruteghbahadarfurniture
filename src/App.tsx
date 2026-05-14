@@ -25,9 +25,10 @@ function Header({ activeSection }: { activeSection: string }) {
             className="flex items-center gap-3 min-w-0"
           >
             <img src="/images/logo.png" alt="GTB Logo" className="h-10 w-10 md:h-12 md:w-12 object-cover flex-shrink-0 rounded-full shadow-[0_0_20px_rgba(229,184,105,0.4)] border border-[#E5B869]/20" loading="eager" decoding="async" width="48" height="48" />
-            <span className="font-serif text-sm md:text-lg font-bold uppercase tracking-widest text-[#E5B869] whitespace-nowrap">
-              Guru Teg Bahadar <span className="text-white">Furniture House</span>
-            </span>
+            <div className="font-serif text-[11px] sm:text-xs md:text-sm lg:text-lg font-bold uppercase tracking-widest text-[#E5B869] flex flex-col lg:block lg:whitespace-nowrap leading-tight">
+              <span>Guru Teg Bahadar</span>
+              <span className="text-white lg:ml-2">Furniture House</span>
+            </div>
           </motion.div>
 
           {/* Nav — Desktop */}
