@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, MapPin, Facebook, Instagram, Twitter, ArrowRight, CheckCircle, Menu, X } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 
 function Header({ activeSection }: { activeSection: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -398,117 +398,282 @@ function Collections() {
   );
 }
 
+const bedsImages = [
+  "/result_work/beds/IMG-20260515-WA0020.jpg", "/result_work/beds/IMG-20260515-WA0021.jpg", 
+  "/result_work/beds/IMG-20260515-WA0023.jpg", "/result_work/beds/IMG-20260515-WA0025.jpg", 
+  "/result_work/beds/IMG-20260515-WA0026.jpg", "/result_work/beds/IMG-20260515-WA0035.jpg", 
+  "/result_work/beds/IMG-20260515-WA0037.jpg", "/result_work/beds/IMG-20260515-WA0040.jpg",
+  "/result_work/beds/IMG-20260515-WA0043.jpg", "/result_work/beds/IMG-20260515-WA0046.jpg"
+];
+
+const wardrobeImages = [
+  "/result_work/wardrobe/IMG-20260515-WA0002.jpg", "/result_work/wardrobe/IMG-20260515-WA0007.jpg", 
+  "/result_work/wardrobe/IMG-20260515-WA0010.jpg", "/result_work/wardrobe/IMG-20260515-WA0013.jpg", 
+  "/result_work/wardrobe/IMG-20260515-WA0015.jpg", "/result_work/wardrobe/IMG-20260515-WA0022.jpg", 
+  "/result_work/wardrobe/IMG-20260515-WA0027.jpg", "/result_work/wardrobe/IMG-20260515-WA0029.jpg",
+  "/result_work/wardrobe/IMG-20260515-WA0030.jpg", "/result_work/wardrobe/IMG-20260515-WA0031.jpg"
+];
+
+const pvcImages = [
+  "/result_work/pvc/IMG-20260515-WA0011.jpg", "/result_work/pvc/IMG-20260515-WA0018.jpg", 
+  "/result_work/pvc/IMG-20260515-WA0041.jpg", "/result_work/pvc/IMG-20260515-WA0042.jpg", 
+  "/result_work/pvc/IMG-20260515-WA0045.jpg", "/result_work/pvc/IMG-20260515-WA0048.jpg", 
+  "/result_work/pvc/IMG-20260515-WA0078.jpg", "/result_work/pvc/IMG-20260515-WA0085.jpg",
+  "/result_work/pvc/IMG-20260515-WA0086.jpg", "/result_work/pvc/IMG-20260515-WA0090.jpg"
+];
+
+const wallpaperImages = [
+  "/result_work/wallpaper/Beautiful Peel and Stick Damask Wallpaper.jpg", 
+  "/result_work/wallpaper/Black & Grey Walls_ Modern Design Serenity_.jpg", 
+  "/result_work/wallpaper/Whimsical Decor_ Tropical Pink Leaves Wallpaper for a Gorgeous Room.jpg", 
+  "/result_work/wallpaper/download (1).jpg", 
+  "/result_work/wallpaper/download (4).jpg", 
+  "/result_work/wallpaper/download.jpg"
+];
+
+const ledPanelsImages = [
+  "/result_work/led_panels/IMG-20260515-WA0001.jpg", "/result_work/led_panels/IMG-20260515-WA0005.jpg", 
+  "/result_work/led_panels/IMG-20260515-WA0006.jpg", "/result_work/led_panels/IMG-20260515-WA0009.jpg", 
+  "/result_work/led_panels/IMG-20260515-WA0012.jpg", "/result_work/led_panels/IMG-20260515-WA0014.jpg", 
+  "/result_work/led_panels/IMG-20260515-WA0017.jpg", "/result_work/led_panels/IMG-20260515-WA0024.jpg",
+  "/result_work/led_panels/IMG-20260515-WA0028.jpg", "/result_work/led_panels/IMG-20260515-WA0038.jpg"
+];
+
+function GalleryModal({ images, isOpen, onClose }: { images: string[], isOpen: boolean, onClose: () => void }) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [isOpen]);
+
+  // Continuous buttery-smooth slide show from right to left
+  useEffect(() => {
+    if (!isOpen || images.length === 0) return;
+    
+    let animationFrameId: number;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scroll = () => {
+      if (!isPaused) {
+        container.scrollLeft += 1.5; // Smooth continuous scroll speed
+        
+        // If we reach the end, instantly reset to beginning to create loop effect
+        // (We duplicate the images array below to make this seamless)
+        if (container.scrollLeft >= (container.scrollWidth / 2)) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isOpen, images, isPaused]);
+
+  // Duplicate images to create a seamless infinite scrolling effect
+  const displayImages = [...images, ...images];
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
+        >
+          <button 
+            onClick={onClose}
+            className="absolute top-4 right-4 md:top-8 md:right-8 bg-[#E5B869] text-[#0a0a0a] hover:bg-white hover:scale-110 transition-all p-3 rounded-full z-[110] shadow-[0_0_30px_rgba(229,184,105,0.4)]"
+          >
+            <X size={24} className="stroke-[3]" />
+          </button>
+          
+          <div 
+            ref={scrollContainerRef} 
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            className="w-full max-w-[100vw] flex overflow-x-auto pb-6 items-center custom-scrollbar" 
+            style={{ scrollbarWidth: 'none' }}
+          >
+            {images.length === 0 && (
+              <div className="w-full text-center text-zinc-500 font-sans tracking-widest uppercase">No images found</div>
+            )}
+            {displayImages.map((src, idx) => (
+              <div key={idx} className="pl-4 md:pl-8 min-w-[65vw] md:min-w-[45vw] lg:min-w-[30vw] h-[45vh] md:h-[55vh] flex-shrink-0">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full h-full relative overflow-hidden rounded-2xl border-4 border-[#E5B869]/30 shadow-[0_10px_40px_rgba(229,184,105,0.15)]"
+                >
+                  <img 
+                    src={src} 
+                    alt={`Recent work ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/80 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 font-sans text-[10px] uppercase tracking-widest text-zinc-300 font-bold">
+                    Recent Work {(idx % images.length) + 1}
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function Services() {
+  const [activeGallery, setActiveGallery] = useState<string[] | null>(null);
+
   const services = [
     {
       title: "Custom Beds", italianTitle: "Letti Personalizzati", sub: "Furniture Craft", italianSub: "Artigianato Mobili",
       desc: "Handcrafted bed furniture tailored to your bedroom's aesthetic, combining durable materials with elegant designs.",
-      src: "/images/service_custom_beds.png"
+      src: "/images/service_custom_beds.png",
+      galleryImages: bedsImages
+    },
+    {
+      title: "Custom Wardrobes", italianTitle: "Armadi Su Misura", sub: "Storage Solutions", italianSub: "Soluzioni Salvaspazio",
+      desc: "Bespoke wardrobe designs tailored to maximize your space while maintaining a sleek, modern aesthetic.",
+      src: "/images/luxury_custom_wardrobe.png.png",
+      galleryImages: wardrobeImages
     },
     {
       title: "PVC Solutions", italianTitle: "Soluzioni PVC", sub: "Floor & Ceiling", italianSub: "Pavimento & Soffitto",
       desc: "Premium PVC flooring and stylish ceiling designs, perfect for modernizing kitchens and living spaces.",
-      src: "/images/service_pvc_solutions.png"
+      src: "/images/service_pvc_solutions.png",
+      galleryImages: pvcImages
     },
     {
       title: "Wallpapers", italianTitle: "Carta da Parati", sub: "Wall Decor", italianSub: "Decorazione Pareti",
       desc: "A vast collection of luxurious and contemporary wallpapers to transform ordinary walls into stunning focal points.",
-      src: "/images/service_wallpapers.png"
+      src: "/images/service_wallpapers.png",
+      galleryImages: wallpaperImages
     },
     {
       title: "LED Panels", italianTitle: "Pannelli LED", sub: "Lighting & Display", italianSub: "Illuminazione & Design",
       desc: "Custom stylish LED panels for walls and ceilings that create an inviting ambiance and elevate your room's decor.",
-      src: "/images/service_led_panels.png"
+      src: "/images/service_led_panels.png",
+      galleryImages: ledPanelsImages
     }
   ];
 
   return (
-    <section id="services" className="bg-black py-32 text-white border-t border-white/5 overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-24"
-        >
-          <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-4 block">Our Expertise</span>
-          <h2 className="font-serif text-3xl md:text-5xl font-semibold tracking-tight leading-snug text-white mb-4">
-            Professional Services
-          </h2>
-          <div className="w-16 h-1 bg-[#E5B869] mx-auto opacity-70"></div>
-        </motion.div>
+    <>
+      <GalleryModal 
+        isOpen={activeGallery !== null} 
+        images={activeGallery || []} 
+        onClose={() => setActiveGallery(null)} 
+      />
+      <section id="services" className="bg-black py-32 text-white border-t border-white/5 overflow-hidden">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-24"
+          >
+            <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-4 block">Our Expertise</span>
+            <h2 className="font-serif text-3xl md:text-5xl font-semibold tracking-tight leading-snug text-white mb-4">
+              Professional Services
+            </h2>
+            <div className="w-16 h-1 bg-[#E5B869] mx-auto opacity-70"></div>
+          </motion.div>
 
-        <div className="flex flex-col gap-32 md:gap-48">
-          {services.map((srv, idx) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-100px", amount: 0.2 }}
-              transition={{ duration: 0.8 }}
-              key={idx} 
-              className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}
-            >
-              {/* Content Area */}
-              <div className="flex-1 text-left flex flex-col">
-                <div className="order-1">
-                  <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-2 block">{srv.sub}</span>
-                  <span className="font-sans text-[10px] text-zinc-600 tracking-wide mb-6 block">({srv.italianSub})</span>
+          <div className="flex flex-col gap-32 md:gap-48">
+            {services.map((srv, idx) => (
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-100px", amount: 0.2 }}
+                transition={{ duration: 0.8 }}
+                key={idx} 
+                className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}
+              >
+                {/* Content Area */}
+                <div className="flex-1 text-left flex flex-col">
+                  <div className="order-1">
+                    <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-2 block">{srv.sub}</span>
+                    <span className="font-sans text-[10px] text-zinc-600 tracking-wide mb-6 block">({srv.italianSub})</span>
+                  </div>
+                  
+                  {/* Mobile Image Area - Visible only on mobile */}
+                  <div className="md:hidden order-2 mb-10 relative group">
+                    <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+                      <img 
+                        src={srv.src} 
+                        alt={srv.title} 
+                        className="w-full h-[300px] object-cover" 
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div className="absolute -inset-2 border border-[#E5B869]/10 rounded-2xl -z-0"></div>
+                  </div>
+
+                  <div className="order-3">
+                    <h3 className="font-serif text-3xl md:text-5xl font-semibold mb-6 text-white leading-tight">
+                      {srv.title}
+                      <span className="block text-lg md:text-2xl text-zinc-500 font-sans font-light mt-2">({srv.italianTitle})</span>
+                    </h3>
+                    
+                    <p className="font-sans text-lg text-zinc-400 leading-relaxed font-light mb-10 max-w-xl">
+                      {srv.desc}
+                    </p>
+                  </div>
+                  
+                  <div className="order-4">
+                    <button onClick={() => setActiveGallery(srv.galleryImages)} className="inline-flex items-center gap-3 bg-transparent border border-[#E5B869] text-[#E5B869] px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl shadow-lg shadow-[#E5B869]/10 hover:shadow-[#E5B869]/30">
+                      Check Recent Work <ArrowRight size={16} />
+                    </button>
+                    <span className="block mt-3 text-zinc-600 text-[10px] font-sans tracking-widest uppercase">(Guarda i Lavori Recenti)</span>
+                  </div>
                 </div>
-                
-                {/* Mobile Image Area - Visible only on mobile */}
-                <div className="md:hidden order-2 mb-10 relative group">
-                  <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+
+                {/* Desktop Image Area - Visible only on desktop */}
+                <div className="hidden md:block flex-1 w-full relative group cursor-pointer" onClick={() => setActiveGallery(srv.galleryImages)}>
+                  <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl z-10 group">
                     <img 
                       src={srv.src} 
                       alt={srv.title} 
-                      className="w-full h-[300px] object-cover" 
+                      className="w-full h-[300px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000" 
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                      <div className="bg-[#E5B869] text-[#0a0a0a] px-6 py-3 rounded-xl font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl">
+                        View Gallery <ArrowRight size={14} />
+                      </div>
+                    </div>
                   </div>
-                  <div className="absolute -inset-2 border border-[#E5B869]/10 rounded-2xl -z-0"></div>
+                  {/* Decorative border accent */}
+                  <div className={`absolute -inset-4 border border-[#E5B869]/10 rounded-2xl -z-0 group-hover:-inset-6 group-hover:border-[#E5B869]/20 transition-all duration-700`}></div>
                 </div>
-
-                <div className="order-3">
-                  <h3 className="font-serif text-3xl md:text-5xl font-semibold mb-6 text-white leading-tight">
-                    {srv.title}
-                    <span className="block text-lg md:text-2xl text-zinc-500 font-sans font-light mt-2">({srv.italianTitle})</span>
-                  </h3>
-                  
-                  <p className="font-sans text-lg text-zinc-400 leading-relaxed font-light mb-10 max-w-xl">
-                    {srv.desc}
-                  </p>
-                </div>
-                
-                <div className="order-4">
-                  <a href="#contact" className="inline-flex items-center gap-3 bg-transparent border border-[#E5B869] text-[#E5B869] px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl shadow-lg shadow-[#E5B869]/10 hover:shadow-[#E5B869]/30">
-                    Book Service <ArrowRight size={16} />
-                  </a>
-                </div>
-              </div>
-
-              {/* Desktop Image Area - Visible only on desktop */}
-              <div className="hidden md:block flex-1 w-full relative group">
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl z-10">
-                  <img 
-                    src={srv.src} 
-                    alt={srv.title} 
-                    className="w-full h-[300px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000" 
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-                {/* Decorative border accent */}
-                <div className={`absolute -inset-4 border border-[#E5B869]/10 rounded-2xl -z-0 group-hover:-inset-6 group-hover:border-[#E5B869]/20 transition-all duration-700`}></div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
