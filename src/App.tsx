@@ -423,8 +423,8 @@ const pvcImages = [
 ];
 
 const wallpaperImages = [
-  "/result_work/wallpaper/Beautiful Peel and Stick Damask Wallpaper.jpg", 
-  "/result_work/wallpaper/Black & Grey Walls_ Modern Design Serenity_.jpg", 
+  "/result_work/wallpaper/img1.jpg", 
+  "/result_work/wallpaper/img2.jpg", 
   "/result_work/wallpaper/Whimsical Decor_ Tropical Pink Leaves Wallpaper for a Gorgeous Room.jpg", 
   "/result_work/wallpaper/download (1).jpg", 
   "/result_work/wallpaper/download (4).jpg", 
