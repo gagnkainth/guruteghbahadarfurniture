@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, MapPin, Facebook, Instagram, Twitter, ArrowRight, CheckCircle, Menu, X } from 'lucide-react';
+import { MessageCircle, MapPin, Facebook, Instagram, Twitter, ArrowRight, CheckCircle, Menu, X, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 function Header({ activeSection }: { activeSection: string }) {
@@ -186,11 +186,94 @@ interface CollectionCategoryProps {
   italianTitle: string;
   bannerSrc: string;
   items: CollectionItem[];
+  allImages: string[];
 }
 
-function CollectionCategory({ title, italianTitle, bannerSrc, items }: CollectionCategoryProps) {
+function CollectionModal({ isOpen, onClose, title, italianTitle, bannerSrc, images }: { isOpen: boolean, onClose: () => void, title: string, italianTitle: string, bannerSrc: string, images: string[] }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] bg-black overflow-y-auto"
+        >
+          <div className="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 px-6 py-4 flex items-center justify-between">
+            <button 
+              onClick={onClose}
+              className="flex items-center gap-2 text-zinc-400 hover:text-[#E5B869] transition-colors uppercase tracking-widest font-bold text-xs font-sans"
+            >
+              <ArrowLeft size={16} /> Back
+            </button>
+            <div className="font-serif text-white text-lg tracking-wider hidden sm:block">{title}</div>
+            <div className="w-20"></div>
+          </div>
+
+          <div className="relative h-[30vh] sm:h-[40vh] w-full">
+            <img 
+              src={bannerSrc} 
+              alt={title}
+              className="w-full h-full object-cover opacity-70"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+            <div className="absolute bottom-10 left-0 w-full text-center">
+              <h2 className="text-4xl md:text-6xl text-white font-serif tracking-widest font-semibold drop-shadow-lg">
+                {title}
+              </h2>
+              <span className="block text-lg md:text-2xl font-sans font-light text-[#E5B869] mt-2 tracking-wide">({italianTitle})</span>
+            </div>
+          </div>
+
+          <div className="max-w-[1600px] mx-auto px-4 sm:px-8 py-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {images.map((src, idx) => (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: (idx % 8) * 0.05 }}
+                  key={idx}
+                  className="relative aspect-square sm:aspect-[4/3] rounded-xl overflow-hidden border border-white/5 group bg-[#141414]"
+                >
+                  <img 
+                    src={src} 
+                    alt={`${title} ${idx + 1}`} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function CollectionCategory({ title, italianTitle, bannerSrc, items, allImages }: CollectionCategoryProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="mb-24">
+      <CollectionModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        title={title} 
+        italianTitle={italianTitle} 
+        bannerSrc={bannerSrc} 
+        images={allImages} 
+      />
       {/* Banner */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
@@ -223,8 +306,8 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px", amount: 0.2 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            key={idx} 
-            className="group relative bg-[#141414] border border-white/5 overflow-hidden hover:border-[#E5B869]/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 rounded-2xl"
+            key={idx}
+            className={`group relative bg-[#141414] border border-white/5 overflow-hidden hover:border-[#E5B869]/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 rounded-2xl ${idx >= 2 ? 'hidden md:block' : ''}`}
           >
             <div className="w-full h-40 sm:h-64 overflow-hidden relative border-b border-white/5 rounded-t-2xl">
               <img src={item.src} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" loading="lazy" decoding="async" />
@@ -239,11 +322,35 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
           </motion.div>
         ))}
       </div>
+      
+      {allImages && allImages.length > 0 && (
+        <div className="mt-12 flex justify-center">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center gap-3 border border-[#E5B869]/50 text-[#E5B869] px-8 py-3 uppercase tracking-widest text-xs font-bold font-sans rounded-xl hover:bg-[#E5B869] hover:text-black transition-all shadow-lg shadow-[#E5B869]/10"
+          >
+            View Full Gallery <ArrowRight size={16} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 function Collections() {
+  const generateImages = (prefix: string, count: number, folder: string) => {
+    return Array.from({ length: count }, (_, i) => `/collections/${folder}/${prefix} (${i + 1}).jpeg`);
+  };
+
+  const allSingleBed = [
+    ...Array.from({ length: 4 }, (_, i) => `/collections/single_bed/img4 (${i + 1}).jpeg`),
+    ...Array.from({ length: 10 }, (_, i) => `/collections/single_bed/img${i + 1}.jpg`)
+  ];
+  const allDoubleBed = generateImages("img5", 52, "double_bed");
+  const allAlmirah = ["/collections/almirah/frontimage.jpeg", ...generateImages("img1", 43, "almirah")];
+  const allLedPanels = generateImages("img3", 20, "led_paneels");
+  const allKitchen = generateImages("img2", 23, "kitchen");
+
   return (
     <section id="collection" className="min-h-screen py-24 flex items-center bg-[#0a0a0a]">
       <div className="max-w-[1280px] mx-auto px-4 md:px-16 w-full">
@@ -265,6 +372,7 @@ function Collections() {
           title="Single Bed"
           italianTitle="Letto Singolo"
           bannerSrc="/collections/single_bed/img4 (3).jpeg"
+          allImages={allSingleBed}
           items={[
             { name: "Classic Single", italianName: "Singolo Classico", desc: "Elegant design for cozy spaces.", src: "/collections/single_bed/img4 (2).jpeg" },
             { name: "Modern Single", italianName: "Singolo Moderno", desc: "Minimalist approach for modern rooms.", src: "/collections/single_bed/img4 (3).jpeg" },
@@ -277,6 +385,7 @@ function Collections() {
           title="Double Bed"
           italianTitle="Letto Matrimoniale"
           bannerSrc="/collections/double_bed/img5 (2).jpeg"
+          allImages={allDoubleBed}
           items={[
             { name: "Luxury Double", italianName: "Matrimoniale Lusso", desc: "Spacious luxury with premium headboards.", src: "/collections/double_bed/img5 (2).jpeg" },
             { name: "Classic Double", italianName: "Matrimoniale Classico", desc: "Timeless design for any bedroom.", src: "/collections/double_bed/img5 (3).jpeg" },
@@ -289,6 +398,7 @@ function Collections() {
           title="Wardrobe (Almirah)"
           italianTitle="Armadio"
           bannerSrc="/collections/almirah/frontimage.jpeg"
+          allImages={allAlmirah}
           items={[
             { name: "Sliding Wardrobe", italianName: "Armadio Scorrevole", desc: "Space-saving design with smooth glide.", src: "/collections/almirah/img1 (2).jpeg" },
             { name: "Classic Almirah", italianName: "Armadio Classico", desc: "Traditional elegance with ample storage.", src: "/collections/almirah/img1 (3).jpeg" },
@@ -301,6 +411,7 @@ function Collections() {
           title="LCD / TV Panels"
           italianTitle="Pannelli TV"
           bannerSrc="/collections/led_paneels/img3 (4).jpeg"
+          allImages={allLedPanels}
           items={[
             { name: "Modern TV Panel", italianName: "Pannello TV Moderno", desc: "Sleek and minimal for living rooms.", src: "/collections/led_paneels/img3 (2).jpeg" },
             { name: "Luxury Media Wall", italianName: "Parete Attrezzata Lusso", desc: "Integrated lighting and premium materials.", src: "/collections/led_paneels/img3 (3).jpeg" },
@@ -313,6 +424,7 @@ function Collections() {
           title="Kitchen"
           italianTitle="Cucina"
           bannerSrc="/collections/kitchen/img2 (18).jpeg"
+          allImages={allKitchen}
           items={[
             { name: "Modular Kitchen", italianName: "Cucina Componibile", desc: "Efficient and smart modular layouts.", src: "/collections/kitchen/img2 (2).jpeg" },
             { name: "Luxury Kitchen", italianName: "Cucina di Lusso", desc: "Premium finishes and high-end materials.", src: "/collections/kitchen/img2 (3).jpeg" },
@@ -331,12 +443,12 @@ function Services() {
     {
       title: "Custom Beds", italianTitle: "Letti Personalizzati", sub: "Furniture Craft", italianSub: "Artigianato Mobili",
       desc: "Handcrafted bed furniture tailored to your bedroom's aesthetic, combining durable materials with elegant designs.",
-      src: "/images/service_custom_beds.png"
+      src: "/collections/double_bed/img5 (8).jpeg"
     },
     {
       title: "Custom Wardrobes", italianTitle: "Armadi Su Misura", sub: "Storage Solutions", italianSub: "Soluzioni Salvaspazio",
       desc: "Bespoke wardrobe designs tailored to maximize your space while maintaining a sleek, modern aesthetic.",
-      src: "/images/luxury_custom_wardrobe.png.png"
+      src: "/collections/almirah/img1 (8).jpeg"
     },
     {
       title: "PVC Solutions", italianTitle: "Soluzioni PVC", sub: "Floor & Ceiling", italianSub: "Pavimento & Soffitto",
@@ -346,12 +458,12 @@ function Services() {
     {
       title: "Wallpapers", italianTitle: "Carta da Parati", sub: "Wall Decor", italianSub: "Decorazione Pareti",
       desc: "A vast collection of luxurious and contemporary wallpapers to transform ordinary walls into stunning focal points.",
-      src: "/images/service_wallpapers.png"
+      src: "/collections/wallpaper_main.avif"
     },
     {
       title: "LED Panels", italianTitle: "Pannelli LED", sub: "Lighting & Display", italianSub: "Illuminazione & Design",
       desc: "Custom stylish LED panels for walls and ceilings that create an inviting ambiance and elevate your room's decor.",
-      src: "/images/service_led_panels.png"
+      src: "/collections/led_paneels/img3 (11).jpeg"
     }
   ];
 
