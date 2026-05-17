@@ -235,11 +235,6 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items }: Collectio
                 <span className="block text-[9px] md:text-xs text-zinc-500 font-sans font-normal mt-0.5 group-hover:text-zinc-400 transition-colors">({item.italianName})</span>
               </h4>
               <p className="font-sans text-[10px] md:text-sm font-light text-zinc-400 mb-4 md:mb-6 h-12 md:h-10 line-clamp-2 md:line-clamp-none leading-tight md:leading-normal">{item.desc}</p>
-              <div className="flex border-t border-white/5 pt-3 md:pt-4 mt-auto">
-                <a href="#contact" className="font-sans text-[9px] md:text-[11px] tracking-widest uppercase font-bold text-zinc-300 group-hover:text-[#E5B869] transition-colors flex items-center gap-1 md:gap-2">
-                  Inquire <span className="hidden xs:inline">Now</span> <ArrowRight size={12} className="md:w-[14px] md:h-[14px]" />
-                </a>
-              </div>
             </div>
           </motion.div>
         ))}
@@ -267,130 +262,62 @@ function Collections() {
         </motion.div>
 
         <CollectionCategory 
-          title="Beds & Sofas"
-          italianTitle="Letti & Divani"
-          bannerSrc="/images/beds_sofas_banner.jpg"
+          title="Single Bed"
+          italianTitle="Letto Singolo"
+          bannerSrc="/collections/single_bed/img4 (3).jpeg"
           items={[
-            {
-              name: "Single Bed",
-              italianName: "Letto Singolo",
-              desc: "Elegant and compact design for modern spaces.",
-              src: "/images/single_bed.png"
-            },
-            {
-              name: "Double Bed",
-              italianName: "Letto Matrimoniale",
-              desc: "Spacious luxury with premium upholstered headboards.",
-              src: "/images/double_bed.png"
-            },
-            {
-              name: "Sofa Chair",
-              italianName: "Poltrona",
-              desc: "Plush single-seater perfect for reading corners.",
-              src: "/images/sofa_chair.png"
-            },
-            {
-              name: "L-Shape Sofa",
-              italianName: "Divano ad L",
-              desc: "Expansive seating with deep cushioning.",
-              src: "/images/bespoke_l_shape_sofa.png"
-            }
+            { name: "Classic Single", italianName: "Singolo Classico", desc: "Elegant design for cozy spaces.", src: "/collections/single_bed/img4 (2).jpeg" },
+            { name: "Modern Single", italianName: "Singolo Moderno", desc: "Minimalist approach for modern rooms.", src: "/collections/single_bed/img4 (3).jpeg" },
+            { name: "Premium Single", italianName: "Singolo Premium", desc: "Luxurious feel with high-end finish.", src: "/collections/single_bed/img4 (4).jpeg" },
+            { name: "Comfort Single", italianName: "Singolo Comfort", desc: "Maximum comfort with a sleek look.", src: "/collections/single_bed/img4 (1).jpeg" }
           ]}
         />
         
         <CollectionCategory 
-          title="PVC Solutions"
-          italianTitle="Soluzioni PVC"
-          bannerSrc="/images/pvc_solutions_banner.jpg"
+          title="Double Bed"
+          italianTitle="Letto Matrimoniale"
+          bannerSrc="/collections/double_bed/img5 (2).jpeg"
           items={[
-            {
-              name: "PVC Ceiling Panels",
-              italianName: "Pannelli Soffitto PVC",
-              desc: "Moisture-resistant and elegant ceiling designs.",
-              src: "/images/luxury_pvc_ceiling_panels.png"
-            },
-            {
-              name: "Wall Cladding",
-              italianName: "Rivestimento Pareti",
-              desc: "Durable and aesthetic wall protection solutions.",
-              src: "/images/wall_cladding.png"
-            },
-            {
-              name: "Flooring Planks",
-              italianName: "Doghe per Pavimento",
-              desc: "Wood-finish PVC flooring for high-traffic areas.",
-              src: "/images/pvc_flooring.png"
-            },
-            {
-              name: "Decorative Trims",
-              italianName: "Cornici Decorative",
-              desc: "Finishing touches to complete your PVC installation.",
-              src: "/images/decorative_trims.png"
-            }
+            { name: "Luxury Double", italianName: "Matrimoniale Lusso", desc: "Spacious luxury with premium headboards.", src: "/collections/double_bed/img5 (2).jpeg" },
+            { name: "Classic Double", italianName: "Matrimoniale Classico", desc: "Timeless design for any bedroom.", src: "/collections/double_bed/img5 (3).jpeg" },
+            { name: "Modern Double", italianName: "Matrimoniale Moderno", desc: "Sleek and contemporary bed frame.", src: "/collections/double_bed/img5 (4).jpeg" },
+            { name: "Royal Double", italianName: "Matrimoniale Reale", desc: "Exquisite detailing and ultimate comfort.", src: "/collections/double_bed/img5 (5).jpeg" }
           ]}
         />
 
         <CollectionCategory 
-          title="Wallpapers"
-          italianTitle="Carta da Parati"
-          bannerSrc="/images/wallpapers_banner.jpg"
+          title="Wardrobe (Almirah)"
+          italianTitle="Armadio"
+          bannerSrc="/collections/almirah/frontimage.jpeg"
           items={[
-            {
-              name: "Floral Damask",
-              italianName: "Damasco Floreale",
-              desc: "Classic elegance for a timeless background.",
-              src: "/images/luxury_floral_damask_wallpaper.png"
-            },
-            {
-              name: "Modern Geometric",
-              italianName: "Geometrico Moderno",
-              desc: "Sharp, contemporary lines for modern spaces.",
-              src: "/images/modern_geometric_wallpaper.png"
-            },
-            {
-              name: "Textured Linen",
-              italianName: "Lino Strutturato",
-              desc: "Subtle depth and warmth for a cozy atmosphere.",
-              src: "/images/textured_linen_wallpaper.jpg"
-            },
-            {
-              name: "Metallic Accents",
-              italianName: "Accenti Metallici",
-              desc: "Luxurious reflections to brighten any room.",
-              src: "/images/metallic_accents_wallpaper.png"
-            }
+            { name: "Sliding Wardrobe", italianName: "Armadio Scorrevole", desc: "Space-saving design with smooth glide.", src: "/collections/almirah/img1 (2).jpeg" },
+            { name: "Classic Almirah", italianName: "Armadio Classico", desc: "Traditional elegance with ample storage.", src: "/collections/almirah/img1 (3).jpeg" },
+            { name: "Modern Wardrobe", italianName: "Armadio Moderno", desc: "Contemporary look with custom compartments.", src: "/collections/almirah/img1 (4).jpeg" },
+            { name: "Premium Almirah", italianName: "Armadio Premium", desc: "High-end finish with built-in mirrors.", src: "/collections/almirah/img1 (5).jpeg" }
           ]}
         />
 
         <CollectionCategory 
-          title="LED Panels"
-          italianTitle="Pannelli LED"
-          bannerSrc="/images/led_panels_banner.png"
+          title="LCD / TV Panels"
+          italianTitle="Pannelli TV"
+          bannerSrc="/collections/led_paneels/img3 (4).jpeg"
           items={[
-            {
-              name: "Recessed Lights",
-              italianName: "Luci a Incasso",
-              desc: "Seamless Integration for modern ceilings.",
-              src: "/images/recessed_ceiling_lights.png"
-            },
-            {
-              name: "Surface Panels",
-              italianName: "Pannelli a Superficie",
-              desc: "Easy installation with ultra-slim profiles.",
-              src: "/images/surface_panels_led.jpg"
-            },
-            {
-              name: "Decorative LED",
-              italianName: "LED Decorativo",
-              desc: "Accentuate your walls with soft ambient light.",
-              src: "/images/premium_led_wall_panels.png"
-            },
-            {
-              name: "Smart Hue Panels",
-              italianName: "Pannelli Hue Intelligenti",
-              desc: "App-controlled adjustable color temperatures.",
-              src: "/images/smart_hue_panels.jpg"
-            }
+            { name: "Modern TV Panel", italianName: "Pannello TV Moderno", desc: "Sleek and minimal for living rooms.", src: "/collections/led_paneels/img3 (2).jpeg" },
+            { name: "Luxury Media Wall", italianName: "Parete Attrezzata Lusso", desc: "Integrated lighting and premium materials.", src: "/collections/led_paneels/img3 (3).jpeg" },
+            { name: "Classic Entertainment Unit", italianName: "Unità Intrattenimento Classica", desc: "Timeless design with ample storage.", src: "/collections/led_paneels/img3 (4).jpeg" },
+            { name: "Floating TV Unit", italianName: "Mobile TV Sospeso", desc: "Space-saving contemporary style.", src: "/collections/led_paneels/img3 (5).jpeg" }
+          ]}
+        />
+
+        <CollectionCategory 
+          title="Kitchen"
+          italianTitle="Cucina"
+          bannerSrc="/collections/kitchen/img2 (18).jpeg"
+          items={[
+            { name: "Modular Kitchen", italianName: "Cucina Componibile", desc: "Efficient and smart modular layouts.", src: "/collections/kitchen/img2 (2).jpeg" },
+            { name: "Luxury Kitchen", italianName: "Cucina di Lusso", desc: "Premium finishes and high-end materials.", src: "/collections/kitchen/img2 (3).jpeg" },
+            { name: "Modern Kitchen", italianName: "Cucina Moderna", desc: "Sleek, handleless designs for contemporary homes.", src: "/collections/kitchen/img2 (4).jpeg" },
+            { name: "Classic Kitchen", italianName: "Cucina Classica", desc: "Traditional charm with modern amenities.", src: "/collections/kitchen/img2 (5).jpeg" }
           ]}
         />
       </div>
@@ -398,190 +325,38 @@ function Collections() {
   );
 }
 
-const bedsImages = [
-  "/result_work/beds/IMG-20260515-WA0020.jpg", "/result_work/beds/IMG-20260515-WA0021.jpg", 
-  "/result_work/beds/IMG-20260515-WA0023.jpg", "/result_work/beds/IMG-20260515-WA0025.jpg", 
-  "/result_work/beds/IMG-20260515-WA0026.jpg", "/result_work/beds/IMG-20260515-WA0035.jpg", 
-  "/result_work/beds/IMG-20260515-WA0037.jpg", "/result_work/beds/IMG-20260515-WA0040.jpg",
-  "/result_work/beds/IMG-20260515-WA0043.jpg", "/result_work/beds/IMG-20260515-WA0046.jpg"
-];
-
-const wardrobeImages = [
-  "/result_work/wardrobe/IMG-20260515-WA0002.jpg", "/result_work/wardrobe/IMG-20260515-WA0007.jpg", 
-  "/result_work/wardrobe/IMG-20260515-WA0010.jpg", "/result_work/wardrobe/IMG-20260515-WA0013.jpg", 
-  "/result_work/wardrobe/IMG-20260515-WA0015.jpg", "/result_work/wardrobe/IMG-20260515-WA0022.jpg", 
-  "/result_work/wardrobe/IMG-20260515-WA0027.jpg", "/result_work/wardrobe/IMG-20260515-WA0029.jpg",
-  "/result_work/wardrobe/IMG-20260515-WA0030.jpg", "/result_work/wardrobe/IMG-20260515-WA0031.jpg"
-];
-
-const pvcImages = [
-  "/result_work/pvc/IMG-20260515-WA0011.jpg", "/result_work/pvc/IMG-20260515-WA0018.jpg", 
-  "/result_work/pvc/IMG-20260515-WA0041.jpg", "/result_work/pvc/IMG-20260515-WA0042.jpg", 
-  "/result_work/pvc/IMG-20260515-WA0045.jpg", "/result_work/pvc/IMG-20260515-WA0048.jpg", 
-  "/result_work/pvc/IMG-20260515-WA0078.jpg", "/result_work/pvc/IMG-20260515-WA0085.jpg",
-  "/result_work/pvc/IMG-20260515-WA0086.jpg", "/result_work/pvc/IMG-20260515-WA0090.jpg"
-];
-
-const wallpaperImages = [
-  "/result_work/wallpaper/img1.jpg", 
-  "/result_work/wallpaper/img2.jpg", 
-  "/result_work/wallpaper/Whimsical Decor_ Tropical Pink Leaves Wallpaper for a Gorgeous Room.jpg", 
-  "/result_work/wallpaper/download (1).jpg", 
-  "/result_work/wallpaper/download (4).jpg", 
-  "/result_work/wallpaper/download.jpg"
-];
-
-const ledPanelsImages = [
-  "/result_work/led_panels/IMG-20260515-WA0001.jpg", "/result_work/led_panels/IMG-20260515-WA0005.jpg", 
-  "/result_work/led_panels/IMG-20260515-WA0006.jpg", "/result_work/led_panels/IMG-20260515-WA0009.jpg", 
-  "/result_work/led_panels/IMG-20260515-WA0012.jpg", "/result_work/led_panels/IMG-20260515-WA0014.jpg", 
-  "/result_work/led_panels/IMG-20260515-WA0017.jpg", "/result_work/led_panels/IMG-20260515-WA0024.jpg",
-  "/result_work/led_panels/IMG-20260515-WA0028.jpg", "/result_work/led_panels/IMG-20260515-WA0038.jpg"
-];
-
-function GalleryModal({ images, isOpen, onClose }: { images: string[], isOpen: boolean, onClose: () => void }) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Prevent scrolling when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => { document.body.style.overflow = 'auto'; };
-  }, [isOpen]);
-
-  // Continuous buttery-smooth slide show from right to left
-  useEffect(() => {
-    if (!isOpen || images.length === 0) return;
-    
-    let animationFrameId: number;
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const scroll = () => {
-      if (!isPaused) {
-        container.scrollLeft += 1.5; // Smooth continuous scroll speed
-        
-        // If we reach the end, instantly reset to beginning to create loop effect
-        // (We duplicate the images array below to make this seamless)
-        if (container.scrollLeft >= (container.scrollWidth / 2)) {
-          container.scrollLeft = 0;
-        }
-      }
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isOpen, images, isPaused]);
-
-  // Duplicate images to create a seamless infinite scrolling effect
-  const displayImages = [...images, ...images];
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
-        >
-          <button 
-            onClick={onClose}
-            className="absolute top-4 right-4 md:top-8 md:right-8 bg-[#E5B869] text-[#0a0a0a] hover:bg-white hover:scale-110 transition-all p-3 rounded-full z-[110] shadow-[0_0_30px_rgba(229,184,105,0.4)]"
-          >
-            <X size={24} className="stroke-[3]" />
-          </button>
-          
-          <div 
-            ref={scrollContainerRef} 
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
-            className="w-full max-w-[100vw] flex overflow-x-auto pb-6 items-center custom-scrollbar" 
-            style={{ scrollbarWidth: 'none' }}
-          >
-            {images.length === 0 && (
-              <div className="w-full text-center text-zinc-500 font-sans tracking-widest uppercase">No images found</div>
-            )}
-            {displayImages.map((src, idx) => (
-              <div key={idx} className="pl-4 md:pl-8 min-w-[65vw] md:min-w-[45vw] lg:min-w-[30vw] h-[45vh] md:h-[55vh] flex-shrink-0">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full h-full relative overflow-hidden rounded-2xl border-4 border-[#E5B869]/30 shadow-[0_10px_40px_rgba(229,184,105,0.15)]"
-                >
-                  <img 
-                    src={src} 
-                    alt={`Recent work ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/80 to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 font-sans text-[10px] uppercase tracking-widest text-zinc-300 font-bold">
-                    Recent Work {(idx % images.length) + 1}
-                  </div>
-                </motion.div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
 
 function Services() {
-  const [activeGallery, setActiveGallery] = useState<string[] | null>(null);
-
   const services = [
     {
       title: "Custom Beds", italianTitle: "Letti Personalizzati", sub: "Furniture Craft", italianSub: "Artigianato Mobili",
       desc: "Handcrafted bed furniture tailored to your bedroom's aesthetic, combining durable materials with elegant designs.",
-      src: "/images/service_custom_beds.png",
-      galleryImages: bedsImages
+      src: "/images/service_custom_beds.png"
     },
     {
       title: "Custom Wardrobes", italianTitle: "Armadi Su Misura", sub: "Storage Solutions", italianSub: "Soluzioni Salvaspazio",
       desc: "Bespoke wardrobe designs tailored to maximize your space while maintaining a sleek, modern aesthetic.",
-      src: "/images/luxury_custom_wardrobe.png.png",
-      galleryImages: wardrobeImages
+      src: "/images/luxury_custom_wardrobe.png.png"
     },
     {
       title: "PVC Solutions", italianTitle: "Soluzioni PVC", sub: "Floor & Ceiling", italianSub: "Pavimento & Soffitto",
       desc: "Premium PVC flooring and stylish ceiling designs, perfect for modernizing kitchens and living spaces.",
-      src: "/images/service_pvc_solutions.png",
-      galleryImages: pvcImages
+      src: "/images/service_pvc_solutions.png"
     },
     {
       title: "Wallpapers", italianTitle: "Carta da Parati", sub: "Wall Decor", italianSub: "Decorazione Pareti",
       desc: "A vast collection of luxurious and contemporary wallpapers to transform ordinary walls into stunning focal points.",
-      src: "/images/service_wallpapers.png",
-      galleryImages: wallpaperImages
+      src: "/images/service_wallpapers.png"
     },
     {
       title: "LED Panels", italianTitle: "Pannelli LED", sub: "Lighting & Display", italianSub: "Illuminazione & Design",
       desc: "Custom stylish LED panels for walls and ceilings that create an inviting ambiance and elevate your room's decor.",
-      src: "/images/service_led_panels.png",
-      galleryImages: ledPanelsImages
+      src: "/images/service_led_panels.png"
     }
   ];
 
   return (
     <>
-      <GalleryModal 
-        isOpen={activeGallery !== null} 
-        images={activeGallery || []} 
-        onClose={() => setActiveGallery(null)} 
-      />
       <section id="services" className="bg-black py-32 text-white border-t border-white/5 overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full">
           <motion.div 
@@ -641,16 +416,11 @@ function Services() {
                     </p>
                   </div>
                   
-                  <div className="order-4">
-                    <button onClick={() => setActiveGallery(srv.galleryImages)} className="inline-flex items-center gap-3 bg-transparent border border-[#E5B869] text-[#E5B869] px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-[#E5B869] hover:text-[#0a0a0a] transition-all rounded-xl shadow-lg shadow-[#E5B869]/10 hover:shadow-[#E5B869]/30">
-                      Check Recent Work <ArrowRight size={16} />
-                    </button>
-                    <span className="block mt-3 text-zinc-600 text-[10px] font-sans tracking-widest uppercase">(Guarda i Lavori Recenti)</span>
-                  </div>
+
                 </div>
 
                 {/* Desktop Image Area - Visible only on desktop */}
-                <div className="hidden md:block flex-1 w-full relative group cursor-pointer" onClick={() => setActiveGallery(srv.galleryImages)}>
+                <div className="hidden md:block flex-1 w-full relative group">
                   <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl z-10 group">
                     <img 
                       src={srv.src} 
@@ -659,11 +429,6 @@ function Services() {
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                      <div className="bg-[#E5B869] text-[#0a0a0a] px-6 py-3 rounded-xl font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl">
-                        View Gallery <ArrowRight size={14} />
-                      </div>
-                    </div>
                   </div>
                   {/* Decorative border accent */}
                   <div className={`absolute -inset-4 border border-[#E5B869]/10 rounded-2xl -z-0 group-hover:-inset-6 group-hover:border-[#E5B869]/20 transition-all duration-700`}></div>
