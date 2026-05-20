@@ -18,7 +18,7 @@ function Header({ activeSection }: { activeSection: string }) {
       <header className="bg-[#0a0a0a]/90 backdrop-blur-md fixed top-0 z-50 border-b border-white/5 shadow-sm w-full h-20 transition-all">
         <div className="w-full mx-auto px-6 md:px-10 flex items-center h-full justify-between lg:justify-start gap-6">
           {/* Brand — left */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -32,16 +32,16 @@ function Header({ activeSection }: { activeSection: string }) {
           </motion.div>
 
           {/* Nav — Desktop */}
-          <motion.nav 
+          <motion.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hidden lg:flex flex-1 justify-center gap-10 items-center"
           >
             {navLinks.map((link) => (
-              <a 
+              <a
                 key={link.name}
-                className={`relative group ${activeSection === link.id ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`} 
+                className={`relative group ${activeSection === link.id ? 'text-[#E5B869]' : 'text-zinc-400'} hover:text-[#E5B869] transition-all duration-300 uppercase text-sm font-semibold tracking-widest`}
                 href={link.href}
               >
                 {link.name}
@@ -57,8 +57,8 @@ function Header({ activeSection }: { activeSection: string }) {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="hidden lg:flex items-center"
           >
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="bg-[#E5B869] text-[#0a0a0a] px-6 py-2.5 uppercase text-xs font-bold tracking-widest rounded-xl shadow-lg shadow-[#E5B869]/20 hover:bg-white hover:shadow-[#E5B869]/40 transition-all"
             >
               Book Now
@@ -67,7 +67,7 @@ function Header({ activeSection }: { activeSection: string }) {
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center lg:hidden">
-            <button 
+            <button
               className="text-white p-2 hover:text-[#E5B869] transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -79,7 +79,7 @@ function Header({ activeSection }: { activeSection: string }) {
 
       {/* Mobile Menu Overlay */}
       <div className={`fixed inset-0 z-[60] bg-black/98 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col items-center justify-center ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-        <button 
+        <button
           className="absolute top-6 right-6 text-zinc-500 hover:text-white transition-colors"
           onClick={() => setIsMenuOpen(false)}
         >
@@ -87,7 +87,7 @@ function Header({ activeSection }: { activeSection: string }) {
         </button>
         <div className="flex flex-col items-center gap-8 text-center">
           {navLinks.map((link, idx) => (
-            <motion.a 
+            <motion.a
               key={link.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isMenuOpen ? { opacity: 1, y: 0 } : {}}
@@ -99,7 +99,7 @@ function Header({ activeSection }: { activeSection: string }) {
               {link.name}
             </motion.a>
           ))}
-          <motion.a 
+          <motion.a
             initial={{ opacity: 0, y: 20 }}
             animate={isMenuOpen ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6 }}
@@ -135,9 +135,9 @@ function Hero() {
         {/* Warm gold color wash on the far left edge */}
         <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#E5B869]/10 to-transparent pointer-events-none"></div>
       </div>
-      
+
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center mt-0 lg:-mt-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -202,14 +202,14 @@ function CollectionModal({ isOpen, onClose, title, italianTitle, bannerSrc, imag
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] bg-black overflow-y-auto"
         >
           <div className="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 px-6 py-4 flex items-center justify-between">
-            <button 
+            <button
               onClick={onClose}
               className="flex items-center gap-2 text-zinc-400 hover:text-[#E5B869] transition-colors uppercase tracking-widest font-bold text-xs font-sans"
             >
@@ -220,8 +220,8 @@ function CollectionModal({ isOpen, onClose, title, italianTitle, bannerSrc, imag
           </div>
 
           <div className="relative h-[30vh] sm:h-[40vh] w-full">
-            <img 
-              src={bannerSrc} 
+            <img
+              src={bannerSrc}
               alt={title}
               className="w-full h-full object-cover opacity-70"
             />
@@ -237,7 +237,7 @@ function CollectionModal({ isOpen, onClose, title, italianTitle, bannerSrc, imag
           <div className="max-w-[1600px] mx-auto px-4 sm:px-8 py-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {images.map((src, idx) => (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -245,9 +245,9 @@ function CollectionModal({ isOpen, onClose, title, italianTitle, bannerSrc, imag
                   key={idx}
                   className="relative aspect-square sm:aspect-[4/3] rounded-xl overflow-hidden border border-white/5 group bg-[#141414]"
                 >
-                  <img 
-                    src={src} 
-                    alt={`${title} ${idx + 1}`} 
+                  <img
+                    src={src}
+                    alt={`${title} ${idx + 1}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
@@ -266,24 +266,24 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items, allImages }
 
   return (
     <div className="mb-24">
-      <CollectionModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        title={title} 
-        italianTitle={italianTitle} 
-        bannerSrc={bannerSrc} 
-        images={allImages} 
+      <CollectionModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={title}
+        italianTitle={italianTitle}
+        bannerSrc={bannerSrc}
+        images={allImages}
       />
       {/* Banner */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: false, margin: "-100px", amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="relative h-[300px] md:h-[400px] mb-12 overflow-hidden border border-white/5 group rounded-2xl"
       >
-        <img 
-          src={bannerSrc} 
+        <img
+          src={bannerSrc}
           alt={`${title} Banner`}
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 opacity-80"
           loading="lazy"
@@ -297,11 +297,11 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items, allImages }
           </h3>
         </div>
       </motion.div>
-      
+
       {/* Sub-items */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
         {items.map((item, idx) => (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px", amount: 0.2 }}
@@ -322,10 +322,10 @@ function CollectionCategory({ title, italianTitle, bannerSrc, items, allImages }
           </motion.div>
         ))}
       </div>
-      
+
       {allImages && allImages.length > 0 && (
         <div className="mt-12 flex justify-center">
-          <button 
+          <button
             onClick={() => setIsModalOpen(true)}
             className="flex items-center gap-3 border border-[#E5B869]/50 text-[#E5B869] px-8 py-3 uppercase tracking-widest text-xs font-bold font-sans rounded-xl hover:bg-[#E5B869] hover:text-black transition-all shadow-lg shadow-[#E5B869]/10"
           >
@@ -348,13 +348,14 @@ function Collections() {
   ];
   const allDoubleBed = generateImages("img5", 52, "double_bed");
   const allAlmirah = ["/collections/almirah/frontimage.jpeg", ...generateImages("img1", 43, "almirah")];
+  const allStudyTable = generateImages("img_1", 10, "study_table");
   const allLedPanels = generateImages("img3", 20, "led_paneels");
   const allKitchen = generateImages("img2", 23, "kitchen");
 
   return (
     <section id="collection" className="min-h-screen py-24 flex items-center bg-[#0a0a0a]">
       <div className="max-w-[1280px] mx-auto px-4 md:px-16 w-full">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
@@ -368,7 +369,7 @@ function Collections() {
           <div className="w-24 h-1 bg-[#E5B869] mx-auto mt-4"></div>
         </motion.div>
 
-        <CollectionCategory 
+        <CollectionCategory
           title="Single Bed"
           italianTitle="Letto Singolo"
           bannerSrc="/collections/single_bed/img4 (3).jpeg"
@@ -380,8 +381,8 @@ function Collections() {
             { name: "Comfort Single", italianName: "Singolo Comfort", desc: "Maximum comfort with a sleek look.", src: "/collections/single_bed/img4 (1).jpeg" }
           ]}
         />
-        
-        <CollectionCategory 
+
+        <CollectionCategory
           title="Double Bed"
           italianTitle="Letto Matrimoniale"
           bannerSrc="/collections/double_bed/img5 (2).jpeg"
@@ -394,7 +395,7 @@ function Collections() {
           ]}
         />
 
-        <CollectionCategory 
+        <CollectionCategory
           title="Wardrobe (Almirah)"
           italianTitle="Armadio"
           bannerSrc="/collections/almirah/frontimage.jpeg"
@@ -407,7 +408,20 @@ function Collections() {
           ]}
         />
 
-        <CollectionCategory 
+        <CollectionCategory
+          title="Dressing & Study Table"
+          italianTitle="Tavolo da Trucco e Studio"
+          bannerSrc="/collections/study_table/img_1 (1).jpeg"
+          allImages={allStudyTable}
+          items={[
+            { name: "Modern Study Table", italianName: "Tavolo Studio Moderno", desc: "Sleek and functional workspace.", src: "/collections/study_table/img_1 (2).jpeg" },
+            { name: "Classic Dressing Table", italianName: "Tavolo Trucco Classico", desc: "Elegant design with ample storage.", src: "/collections/study_table/img_1 (3).jpeg" },
+            { name: "Premium Desk", italianName: "Scrivania Premium", desc: "Luxurious finish for your home office.", src: "/collections/study_table/img_1 (4).jpeg" },
+            { name: "Compact Study Table", italianName: "Tavolo Studio Compatto", desc: "Space-saving setup for small rooms.", src: "/collections/study_table/img_1 (5).jpeg" }
+          ]}
+        />
+
+        <CollectionCategory
           title="LCD / TV Panels"
           italianTitle="Pannelli TV"
           bannerSrc="/collections/led_paneels/img3 (4).jpeg"
@@ -420,7 +434,7 @@ function Collections() {
           ]}
         />
 
-        <CollectionCategory 
+        <CollectionCategory
           title="Kitchen"
           italianTitle="Cucina"
           bannerSrc="/collections/kitchen/img2 (18).jpeg"
@@ -471,7 +485,7 @@ function Services() {
     <>
       <section id="services" className="bg-black py-32 text-white border-t border-white/5 overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 w-full">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -487,12 +501,12 @@ function Services() {
 
           <div className="flex flex-col gap-32 md:gap-48">
             {services.map((srv, idx) => (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px", amount: 0.2 }}
                 transition={{ duration: 0.8 }}
-                key={idx} 
+                key={idx}
                 className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}
               >
                 {/* Content Area */}
@@ -501,14 +515,14 @@ function Services() {
                     <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-2 block">{srv.sub}</span>
                     <span className="font-sans text-[10px] text-zinc-600 tracking-wide mb-6 block">({srv.italianSub})</span>
                   </div>
-                  
+
                   {/* Mobile Image Area - Visible only on mobile */}
                   <div className="md:hidden order-2 mb-10 relative group">
                     <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
-                      <img 
-                        src={srv.src} 
-                        alt={srv.title} 
-                        className="w-full h-[300px] object-cover" 
+                      <img
+                        src={srv.src}
+                        alt={srv.title}
+                        className="w-full h-[300px] object-cover"
                         loading="lazy"
                         decoding="async"
                       />
@@ -522,22 +536,22 @@ function Services() {
                       {srv.title}
                       <span className="block text-lg md:text-2xl text-zinc-500 font-sans font-light mt-2">({srv.italianTitle})</span>
                     </h3>
-                    
+
                     <p className="font-sans text-lg text-zinc-400 leading-relaxed font-light mb-10 max-w-xl">
                       {srv.desc}
                     </p>
                   </div>
-                  
+
 
                 </div>
 
                 {/* Desktop Image Area - Visible only on desktop */}
                 <div className="hidden md:block flex-1 w-full relative group">
                   <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl z-10 group">
-                    <img 
-                      src={srv.src} 
-                      alt={srv.title} 
-                      className="w-full h-[300px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000" 
+                    <img
+                      src={srv.src}
+                      alt={srv.title}
+                      className="w-full h-[300px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000"
                       loading="lazy"
                       decoding="async"
                     />
@@ -558,7 +572,7 @@ function Craftsmanship() {
   return (
     <section className="min-h-screen py-32 bg-[#121212] flex items-center border-t border-white/5">
       <div className="max-w-[1280px] mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-center gap-16 w-full">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.2 }}
@@ -573,7 +587,7 @@ function Craftsmanship() {
               loading="lazy"
               decoding="async"
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false, amount: 0.2 }}
@@ -585,7 +599,7 @@ function Craftsmanship() {
             </motion.div>
           </div>
         </motion.div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.2 }}
@@ -644,7 +658,7 @@ function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Construct the message for WhatsApp
     const message = `Hello Guru Teg Bahadar Furniture House, I'm interested in your services.
 *Name:* ${formData.fullName}
@@ -654,10 +668,10 @@ function ContactSection() {
 
     // WhatsApp URL (Gurjeet Singh: +39 389 038 3360)
     const whatsappUrl = `https://wa.me/393890383360?text=${encodeURIComponent(message)}`;
-    
+
     // Open WhatsApp
     window.open(whatsappUrl, '_blank');
-    
+
     setSubmitted(true);
   };
 
@@ -668,7 +682,7 @@ function ContactSection() {
         className="max-w-[800px] mx-auto px-4 md:px-16 w-full relative z-10 text-center">
         <span className="font-sans text-xs font-bold tracking-widest uppercase text-[#E5B869] mb-4 block">Connect &amp; Booking</span>
         <h2 className="font-serif text-4xl md:text-6xl font-semibold tracking-tight leading-snug text-white mb-6">
-          Start Your Journey <br/> <span className="font-light italic text-zinc-400">With Us</span>
+          Start Your Journey <br /> <span className="font-light italic text-zinc-400">With Us</span>
         </h2>
         <p className="font-sans text-lg text-zinc-400 mb-12 max-w-xl mx-auto leading-relaxed font-light">
           Book a consultation or inquire about our premium packages. Share your details, and our dedicated team will be in touch to discuss your vision.
@@ -716,7 +730,7 @@ function Footer() {
     <footer className="bg-black pt-20 pb-12 border-t border-white/5">
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row justify-between gap-16 mb-16 text-left">
-          
+
           {/* Left Column - Brand & Mission */}
           <div className="flex-1 max-w-md">
             <div className="font-serif text-2xl md:text-3xl font-bold uppercase tracking-widest text-[#E5B869] mb-4">
@@ -765,7 +779,7 @@ function Footer() {
           </div>
 
         </div>
-        
+
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-sans text-[9px] tracking-widest uppercase text-zinc-600 text-center md:text-left">
             © {new Date().getFullYear()} Guru Teg Bahadar Furniture House. All Rights Reserved.
